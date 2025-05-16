@@ -2,5 +2,9 @@ import React from "react";
 import styles from "@/app/components/Footer/footer.module.css";
 
 export const Footer = () => {
-  return <div className={styles.footer}>Footer</div>;
+  return (
+    <footer className={styles.footer}>
+      <small>© 2025 Invisible Tomato All rights reserved.</small>
+    </footer>
+  );
 };
