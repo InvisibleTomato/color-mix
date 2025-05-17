@@ -1,0 +1,85 @@
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #6b5b95;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+.signinChildrenWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.signinContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+
+.emailWrapper {
+  margin-bottom: 1rem;
+}
+
+.emailText {
+  font-size: 1rem;
+  font-weight: 400;
+  justify-content: start;
+  margin-bottom: 0.2rem;
+}
+.passwordText {
+  font-size: 1rem;
+  font-weight: 400;
+  justify-content: start;
+  margin-bottom: 0.2rem;
+}
+
+.emailInput {
+  width: 80vw;
+  height: 2rem;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #6b5b95;
+  background: #fefefe;
+  transition: all 0.3s ease;
+}
+
+.passwordInput {
+  width: 80vw;
+  height: 2rem;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #6b5b95;
+  background: #fefefe;
+  transition: all 0.3s ease;
+}
+
+.signinButton {
+  width: 80vw;
+  height: 3rem;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fefefe;
+  background: #6b5b95;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
