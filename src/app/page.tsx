@@ -4,9 +4,9 @@ import { SignIn } from "@/app/signin/page";
 export default function Home() {
   return (
     <div>
-      <h2 className={styles.main}>
+      <div className={styles.main}>
         <SignIn />
-      </h2>
+      </div>
     </div>
   );
 }
