@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { getApps, getApp, initializeApp } from "firebase/app";
 import {
   FIREBASE_API_KEY,
   FIREBASE_APP_ID,
@@ -18,4 +18,6 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+
+export default app;
