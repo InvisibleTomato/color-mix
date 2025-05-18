@@ -12,7 +12,7 @@ export const Header = () => {
   return (
     <div className={styles.header}>
       <Link href="/">
-        <h1 className={outfit.className}>Color Mix</h1>
+        <h1 className={`${outfit.className} ${styles.logo}`}>Color Mix</h1>
       </Link>
     </div>
   );
