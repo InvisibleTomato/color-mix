@@ -1,16 +1,18 @@
+@use "src/styles/variables" as *;
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 50;
-  background: #fefefe;
+  background: $white;
   line-height: 1rem;
   padding: 5%;
 }
 
 .logo {
-  color: #6b5b95;
-  font-size: 1.5rem;
+  color: $purple;
+  font-size: $title-size;
   font-weight: 700;
 }
