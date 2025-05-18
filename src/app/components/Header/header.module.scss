@@ -9,6 +9,14 @@
   background: $white;
   line-height: 1rem;
   padding: 5%;
+
+  @include mq(tab) {
+    padding: 3%;
+  }
+
+  @include mq(pc) {
+    padding: 2%;
+  }
 }
 
 .logo {
