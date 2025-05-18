@@ -1,0 +1,21 @@
+// ブレークポイントの定義
+$breakpoint: (
+  sp: "screen and (max-width: 767px)",
+  tab: "screen and (min-width: 768px)",
+  pc: "screen and (min-width: 1024px)",
+);
+
+@mixin mq($bp) {
+  @media #{map-get($breakpoint, $bp)} {
+    @content;
+  }
+}
+
+$purple: #6b5b95;
+$black: #0e0e0e;
+$white: #fefefe;
+$border-color: #d1d5db;
+$placeholder-color: #adaebc;
+$text-size: 1rem;
+$title-size: 1.5rem;
+$small-text: 0.875rem;
