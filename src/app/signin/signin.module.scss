@@ -1,7 +1,9 @@
+@use "src/styles/variables" as *;
+
 .title {
-  font-size: 1.5rem;
+  font-size: $title-size;
   font-weight: 700;
-  color: #6b5b95;
+  color: $purple;
   margin: 0 auto;
   width: 100%;
   text-align: center;
@@ -31,13 +33,13 @@
 }
 
 .emailText {
-  font-size: 1rem;
+  font-size: $text-size;
   font-weight: 400;
   justify-content: start;
   margin-bottom: 0.2rem;
 }
 .passwordText {
-  font-size: 1rem;
+  font-size: $text-size;
   font-weight: 400;
   justify-content: start;
   margin-bottom: 0.2rem;
@@ -46,20 +48,20 @@
 .emailInput {
   width: 80vw;
   height: 2rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid $border-color;
   border-radius: 5px;
   padding: 0.5rem;
   margin: 0.5rem 0;
-  font-size: 1rem;
+  font-size: $text-size;
   font-weight: 400;
-  color: #0e0e0e;
-  background: #fefefe;
+  color: $black;
+  background: $white;
   transition: all 0.3s ease;
 }
 
 .emailInput::placeholder {
-  font-size: 0.875rem;
-  color: #adaebc;
+  font-size: $small-text;
+  color: $placeholder-color;
   opacity: 1;
 }
 
@@ -68,19 +70,19 @@
   height: 2rem;
   line-height: 2rem; /* ここを合わせる */
 
-  border: 1px solid #d1d5db;
+  border: 1px solid $border-color;
   border-radius: 5px;
   padding: 0.5rem;
   margin: 0.5rem 0;
-  font-size: 1rem;
+  font-size: $text-size;
   font-weight: 400;
-  color: #0e0e0e;
-  background: #fefefe;
+  color: $black;
+  background: $white;
   transition: all 0.3s ease;
 }
 .passwordInput::placeholder {
-  font-size: 0.875rem;
-  color: #adaebc;
+  font-size: $small-text;
+  color: $placeholder-color;
   opacity: 1;
   letter-spacing: 0.02rem;
 }
@@ -92,27 +94,27 @@
   border-radius: 5px;
   padding: 0.5rem;
   margin: 10% 0;
-  font-size: 1rem;
+  font-size: $text-size;
   font-weight: 700;
-  color: #fefefe;
-  background: #6b5b95;
+  color: $white;
+  background: $purple;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .signupLink {
-  color: #6b5b95;
+  color: $purple;
   text-decoration: none;
   margin-bottom: 5%;
 }
 
 .signinSpaceText {
-  color: #0e0e0e;
+  color: $black;
   margin-bottom: 5%;
-  font-size: 0.85rem;
+  font-size: $small-text;
 }
 
 .homeLink {
-  color: #6b5b95;
+  color: $purple;
   text-decoration: none;
 }
