@@ -99,3 +99,20 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
+.signupLink {
+  color: #6b5b95;
+  text-decoration: none;
+  margin-bottom: 5%;
+}
+
+.signinSpaceText {
+  color: #0e0e0e;
+  margin-bottom: 5%;
+  font-size: 0.85rem;
+}
+
+.homeLink {
+  color: #6b5b95;
+  text-decoration: none;
+}
