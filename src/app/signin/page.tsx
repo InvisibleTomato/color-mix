@@ -19,16 +19,18 @@ const SignIn = () => {
           <p className={styles.passwordText}>パスワード</p>
           <input
             type="text"
-            placeholder="123abc"
+            placeholder="8文字以上半角英数字"
             className={styles.passwordInput}
           />
         </div>
         <button className={styles.signinButton}>サインイン</button>
       </div>
-      <p>アカウントをお持ちでない方</p>
+      <p className={styles.signinSubText}>アカウントをお持ちでない方</p>
       {/* <button>Googleでログイン</button> */}
-      <p>または</p>
-      <Link href={"/home"}>ゲストモードで使う</Link>
+      <p className={styles.signinSubText2}>または</p>
+      <Link href={"/home"} className={styles.signinLink}>
+        ゲストモードで使う
+      </Link>
     </div>
   );
 };
