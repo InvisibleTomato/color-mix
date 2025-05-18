@@ -1,6 +1,6 @@
 import "./reset.css";
 import "./globals.css";
-import styles from "./layout.module.css";
+import styles from "./layout.module.scss";
 import { Header } from "@/app/components/Header/Header";
 import { Footer } from "@/app/components/Footer/Footer";
 import { Noto_Sans_JP, Roboto } from "next/font/google";
