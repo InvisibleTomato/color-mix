@@ -1,5 +1,7 @@
+@use "src/styles/variables" as *;
+
 .footer {
-  color: #6b7280;
+  color: $footer-bg-color;
   padding: 20px;
   text-align: center;
   margin-top: auto;
