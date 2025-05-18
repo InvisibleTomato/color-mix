@@ -25,10 +25,12 @@ const SignIn = () => {
         </div>
         <button className={styles.signinButton}>サインイン</button>
       </div>
-      <p className={styles.signinSubText}>アカウントをお持ちでない方</p>
+      <Link href={"/signup"} className={styles.signupLink}>
+        アカウントをお持ちでない方
+      </Link>
       {/* <button>Googleでログイン</button> */}
-      <p className={styles.signinSubText2}>または</p>
-      <Link href={"/home"} className={styles.signinLink}>
+      <p className={styles.signinSpaceText}>または</p>
+      <Link href={"/home"} className={styles.homeLink}>
         ゲストモードで使う
       </Link>
     </div>
