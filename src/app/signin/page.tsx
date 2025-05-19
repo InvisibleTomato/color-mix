@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./signin.module.scss";
 import Link from "next/link";
+import AuthButton from "../components/Button/AuthButton";
 
 const SignIn = () => {
   return (
@@ -27,7 +28,11 @@ const SignIn = () => {
             className={styles.passwordInput}
           />
         </div>
-        <button className={styles.signinButton}>サインイン</button>
+        <AuthButton
+          label="サインイン"
+          className={styles.signinButton}
+          // onClick={handleSignIn}
+        ></AuthButton>
       </div>
       <Link href={"/signup"} className={styles.signupLink}>
         アカウントをお持ちでない方
