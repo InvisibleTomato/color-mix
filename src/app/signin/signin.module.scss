@@ -119,32 +119,6 @@
   letter-spacing: 0.02rem;
 }
 
-.signinButton {
-  width: 80vw;
-  height: 3rem;
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem;
-  margin: 10% 0;
-  font-size: $text-size;
-  font-weight: 700;
-  color: $white;
-  background: $purple;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: block;
-
-  @include mq(tab) {
-    width: 40vw;
-    margin: 5% 0;
-  }
-
-  @include mq(pc) {
-    width: 40vw;
-    margin: 3% auto;
-  }
-}
-
 .signupLink {
   color: $purple;
   text-decoration: none;
