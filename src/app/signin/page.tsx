@@ -8,17 +8,21 @@ const SignIn = () => {
       <h2 className={styles.title}>Color Mix</h2>
       <div className={styles.signinChildrenWrapper}>
         <div className={styles.emailWrapper}>
-          <p className={styles.emailText}>メールアドレス</p>
+          <label htmlFor="email" className={styles.emailText}>
+            メールアドレス
+          </label>
           <input
-            type="text"
+            type="email"
             placeholder="example@email.com"
             className={styles.emailInput}
           />
         </div>
         <div className={styles.passwordWrapper}>
-          <p className={styles.passwordText}>パスワード</p>
+          <label htmlFor="password" className={styles.passwordText}>
+            パスワード
+          </label>
           <input
-            type="text"
+            type="password"
             placeholder="8文字以上半角英数字"
             className={styles.passwordInput}
           />
