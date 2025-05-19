@@ -1,0 +1,120 @@
+@use "src/styles/variables" as *;
+
+.title {
+  font-size: $title-size;
+  font-weight: 700;
+  color: $purple;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+.signinContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin: 15% auto 5% auto;
+
+  @include mq(tab) {
+    margin: 25% auto;
+  }
+  @include mq(pc) {
+    margin: 5% auto;
+  }
+}
+
+.signinChildrenWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 15%;
+
+  @include mq(tab) {
+    margin-top: 5%;
+  }
+
+  @include mq(pc) {
+    margin-top: 5%;
+  }
+}
+
+.emailWrapper {
+  margin-bottom: 1rem;
+}
+
+.emailText {
+  font-size: $text-size;
+  font-weight: 400;
+  justify-content: start;
+  margin-bottom: 0.2rem;
+}
+.passwordText {
+  font-size: $text-size;
+  font-weight: 400;
+  justify-content: start;
+  margin-bottom: 0.2rem;
+}
+
+.emailInput {
+  width: 80vw;
+  height: 2rem;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: $text-size;
+  font-weight: 400;
+  color: $black;
+  background: $white;
+  transition: all 0.3s ease;
+  display: block;
+
+  @include mq(tab) {
+    width: 40vw;
+  }
+
+  @include mq(pc) {
+    width: 40vw;
+  }
+}
+
+.emailInput::placeholder {
+  font-size: $small-text;
+  color: $placeholder-color;
+  opacity: 1;
+}
+
+.passwordInput {
+  width: 80vw;
+  height: 2rem;
+  line-height: 2rem; /* ここを合わせる */
+  display: block;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: $text-size;
+  font-weight: 400;
+  color: $black;
+  background: $white;
+  transition: all 0.3s ease;
+
+  @include mq(tab) {
+    width: 40vw;
+  }
+
+  @include mq(pc) {
+    width: 40vw;
+  }
+}
+.passwordInput::placeholder {
+  font-size: $small-text;
+  color: $placeholder-color;
+  opacity: 1;
+  letter-spacing: 0.02rem;
+}
