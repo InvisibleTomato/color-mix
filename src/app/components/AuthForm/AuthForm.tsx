@@ -3,6 +3,8 @@ import { Outfit } from "next/font/google";
 import React, { useState } from "react";
 import styles from "./AuthForm.module.scss";
 import AuthButton from "../Button/AuthButton";
+import { signUp, signIn } from "../../lib/firebase/auth";
+import { FirebaseError } from "firebase/app";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -14,9 +16,10 @@ type AuthFormProps = {
   title: string;
   onClick?: () => void;
   buttonLabel: string;
+  mode: "signin" | "signup";
 };
 
-const AuthForm: React.FC<AuthFormProps> = ({ title, buttonLabel }) => {
+const AuthForm: React.FC<AuthFormProps> = ({ title, buttonLabel, mode }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,10 +31,32 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, buttonLabel }) => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log("入力されたメールアドレス:", email);
     console.log("入力されたパスワード:", password);
-    // 後でログイン処理を追加予定
+
+    try {
+      const userCredential =
+        mode === "signup"
+          ? await signUp(email, password)
+          : await signIn(email, password);
+
+      console.log(
+        `${mode === "signup" ? "サインアップ" : "サインイン"}成功`,
+        userCredential.user
+      );
+    } catch (error) {
+      const err = error as FirebaseError;
+      console.error("Firebaseエラー:", err.code, err.message);
+    }
+
+    return (
+      <AuthButton
+        label={buttonLabel}
+        onClick={handleSubmit}
+        className={styles.signinButton}
+      />
+    );
   };
 
   return (
