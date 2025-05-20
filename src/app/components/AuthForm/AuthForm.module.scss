@@ -18,7 +18,7 @@
   margin: 15% auto 5% auto;
 
   @include mq(tab) {
-    margin: 25% auto;
+    margin: 25% auto 0 auto;
   }
   @include mq(pc) {
     margin: 5% auto;
