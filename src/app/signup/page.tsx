@@ -1,6 +1,6 @@
 import styles from "./signup.module.scss";
 import Link from "next/link";
-import AuthForm from "../components/AuthForm/AuthForm";
+import AuthForm from "@/app/components/AuthForm/AuthForm";
 
 const SignIn = () => {
   return (
