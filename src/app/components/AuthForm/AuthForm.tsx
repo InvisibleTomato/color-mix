@@ -1,8 +1,14 @@
 "use client";
-
+import { Outfit } from "next/font/google";
 import React, { useState } from "react";
 import styles from "./AuthForm.module.scss";
 import AuthButton from "../Button/AuthButton";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-outfit",
+});
 
 type AuthFormProps = {
   title: string;
@@ -30,7 +36,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, buttonLabel }) => {
 
   return (
     <div className={styles.signinContainer}>
-      <h2 className={styles.title}>{title}</h2>
+      <h2 className={`${outfit.className} ${styles.title}`}>{title}</h2>
       <div className={styles.signinChildrenWrapper}>
         <div className={styles.emailWrapper}>
           <label htmlFor="email" className={styles.emailText}>
