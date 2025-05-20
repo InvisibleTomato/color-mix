@@ -6,6 +6,7 @@ import AuthButton from "../Button/AuthButton";
 import { signUp, signIn } from "../../lib/firebase/auth";
 import { FirebaseError } from "firebase/app";
 import { useRouter } from "next/navigation";
+import { validatePasswordWithRules } from "../../lib/firebase/auth";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -39,6 +40,13 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, buttonLabel, mode }) => {
   // サインアップまたはサインインの処理
   const handleSubmit = async () => {
     setErrorMessage(null); // 毎回初期化
+
+    // パスワードのバリデーション
+    const validationError = await validatePasswordWithRules(password);
+    if (validationError) {
+      setErrorMessage(validationError);
+      return;
+    }
 
     console.log("入力されたメールアドレス:", email);
     console.log("入力されたパスワード:", password);
