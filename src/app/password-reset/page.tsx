@@ -5,7 +5,7 @@ import { useState } from "react";
 const PasswordReset = () => {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const actionCodeSettings = {
       // パスワード再設定後のリダイレクト URL
