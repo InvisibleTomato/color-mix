@@ -31,9 +31,15 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, buttonLabel, mode }) => {
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
+  // エラーメッセージの状態を管理
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const router = useRouter();
+
+  // サインアップまたはサインインの処理
   const handleSubmit = async () => {
+    setErrorMessage(null); // 毎回初期化
+
     console.log("入力されたメールアドレス:", email);
     console.log("入力されたパスワード:", password);
 
@@ -52,6 +58,18 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, buttonLabel, mode }) => {
     } catch (error) {
       const err = error as FirebaseError;
       console.error("Firebaseエラー:", err.code, err.message);
+      if (
+        err.code === "auth/user-not-found" ||
+        err.code === "auth/wrong-password"
+      ) {
+        setErrorMessage("パスワードまたはメールアドレスが間違っています");
+      } else if (err.code === "auth/invalid-email") {
+        setErrorMessage("無効なメールアドレスです");
+      } else {
+        setErrorMessage("ログインに失敗しました");
+      }
+
+      console.error("Firebaseエラー:", err.code, err.message);
     }
 
     return (
@@ -67,6 +85,8 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, buttonLabel, mode }) => {
     <div className={styles.signinContainer}>
       <h2 className={`${outfit.className} ${styles.title}`}>{title}</h2>
       <div className={styles.signinChildrenWrapper}>
+        {/* エラーメッセージを表示 */}
+        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
         <div className={styles.emailWrapper}>
           <label htmlFor="email" className={styles.emailText}>
             メールアドレス
