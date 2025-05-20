@@ -1,1 +1,23 @@
 @use "src/styles/variables" as *;
+
+.signinSpaceText {
+  color: $black;
+  margin-bottom: 5%;
+  font-size: $small-text;
+  text-align: center;
+
+  @include mq(tab) {
+    margin-bottom: 3%;
+  }
+
+  @include mq(pc) {
+    margin-bottom: 2%;
+  }
+}
+
+.homeLink {
+  color: $purple;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
