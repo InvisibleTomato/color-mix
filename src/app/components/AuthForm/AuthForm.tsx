@@ -6,7 +6,7 @@ import AuthButton from "../Button/AuthButton";
 import { signUp, signIn } from "../../lib/firebase/auth";
 import { FirebaseError } from "firebase/app";
 import { useRouter } from "next/navigation";
-import { validatePasswordWithRules } from "../../lib/firebase/auth";
+import { validatePasswordWithRules } from "@/app/lib/firebase/auth";
 
 const outfit = Outfit({
   subsets: ["latin"],
