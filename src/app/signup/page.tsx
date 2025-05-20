@@ -5,7 +5,11 @@ import AuthForm from "../components/AuthForm/AuthForm";
 const SignIn = () => {
   return (
     <div>
-      <AuthForm title="Color Mix" buttonLabel="サインアップ" />
+      <AuthForm
+        title="アカウント新規作成"
+        buttonLabel="サインアップ"
+        mode="signup"
+      />
       {/* <button>Googleでログイン</button> */}
       <p className={styles.signinSpaceText}>または</p>
       <Link href={"/home"} className={styles.homeLink}>
