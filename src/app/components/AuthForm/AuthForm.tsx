@@ -5,6 +5,7 @@ import styles from "./AuthForm.module.scss";
 import AuthButton from "../Button/AuthButton";
 import { signUp, signIn } from "../../lib/firebase/auth";
 import { FirebaseError } from "firebase/app";
+import { useRouter } from "next/navigation";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, buttonLabel, mode }) => {
     setPassword(e.target.value);
   };
 
+  const router = useRouter();
   const handleSubmit = async () => {
     console.log("入力されたメールアドレス:", email);
     console.log("入力されたパスワード:", password);
@@ -41,10 +43,12 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, buttonLabel, mode }) => {
           ? await signUp(email, password)
           : await signIn(email, password);
 
+      const uid = userCredential.user.uid;
       console.log(
         `${mode === "signup" ? "サインアップ" : "サインイン"}成功`,
         userCredential.user
       );
+      router.push(`/home/${uid}`); // ユーザーのホームページに遷移
     } catch (error) {
       const err = error as FirebaseError;
       console.error("Firebaseエラー:", err.code, err.message);
