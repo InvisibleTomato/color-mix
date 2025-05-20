@@ -1,7 +1,18 @@
-import React from "react";
+import styles from "./signup.module.scss";
+import Link from "next/link";
+import AuthForm from "../components/AuthForm/AuthForm";
 
-const SignUp = () => {
-  return <div>SignUp</div>;
+const SignIn = () => {
+  return (
+    <div>
+      <AuthForm title="Color Mix" buttonLabel="サインアップ" />
+      {/* <button>Googleでログイン</button> */}
+      <p className={styles.signinSpaceText}>または</p>
+      <Link href={"/home"} className={styles.homeLink}>
+        ゲストモードで使う
+      </Link>
+    </div>
+  );
 };
 
-export default SignUp;
+export default SignIn;
