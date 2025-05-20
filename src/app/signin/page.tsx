@@ -5,7 +5,7 @@ import AuthForm from "../components/AuthForm/AuthForm";
 const SignIn = () => {
   return (
     <div>
-      <AuthForm title="Color Mix" buttonLabel="サインイン" />
+      <AuthForm title="Color Mix" buttonLabel="サインイン" mode="signin" />
 
       <Link href={"/signup"} className={styles.signupLink}>
         アカウントをお持ちでない方
