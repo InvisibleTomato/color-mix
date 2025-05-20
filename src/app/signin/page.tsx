@@ -1,39 +1,12 @@
-import React from "react";
 import styles from "./signin.module.scss";
 import Link from "next/link";
-import AuthButton from "../components/Button/AuthButton";
+import AuthForm from "../components/AuthForm/AuthForm";
 
 const SignIn = () => {
   return (
-    <div className={styles.signinContainer}>
-      <h2 className={styles.title}>Color Mix</h2>
-      <div className={styles.signinChildrenWrapper}>
-        <div className={styles.emailWrapper}>
-          <label htmlFor="email" className={styles.emailText}>
-            メールアドレス
-          </label>
-          <input
-            type="email"
-            placeholder="example@email.com"
-            className={styles.emailInput}
-          />
-        </div>
-        <div className={styles.passwordWrapper}>
-          <label htmlFor="password" className={styles.passwordText}>
-            パスワード
-          </label>
-          <input
-            type="password"
-            placeholder="8文字以上半角英数字"
-            className={styles.passwordInput}
-          />
-        </div>
-        <AuthButton
-          label="サインイン"
-          className={styles.signinButton}
-          // onClick={handleSignIn}
-        ></AuthButton>
-      </div>
+    <div>
+      <AuthForm title="Color Mix" buttonLabel="サインイン" />
+
       <Link href={"/signup"} className={styles.signupLink}>
         アカウントをお持ちでない方
       </Link>
