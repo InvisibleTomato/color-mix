@@ -1,4 +1,5 @@
 "use client";
+import Profile from "@/app/components/Profile/Profile";
 import { useParams } from "next/navigation";
 
 export default function HomePage() {
@@ -7,7 +8,7 @@ export default function HomePage() {
   return (
     <div>
       <h1>ようこそ、ユーザー {uid} さん</h1>
-      {/* ユーザーごとのデータをFirestoreから読み込むなど */}
+      <Profile />
     </div>
   );
 }
