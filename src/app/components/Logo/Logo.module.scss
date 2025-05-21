@@ -1,0 +1,7 @@
+@use "src/styles/variables" as *;
+
+.logo {
+  color: $purple;
+  font-size: $title-size;
+  font-weight: 700;
+}
