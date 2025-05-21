@@ -7,6 +7,9 @@ const SignIn = () => {
     <div>
       <AuthForm title="Color Mix" buttonLabel="サインイン" mode="signin" />
 
+      <Link href={"/password-reset"} className={styles.signupLink}>
+        パスワードをお忘れの方
+      </Link>
       <Link href={"/signup"} className={styles.signupLink}>
         アカウントをお持ちでない方
       </Link>
