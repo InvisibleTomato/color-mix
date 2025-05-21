@@ -13,7 +13,7 @@ const NewPassword = () => {
   const continueUrl = searchParams.get("continueUrl"); // 処理後にリダイレクトするURL
 
   const [isCodeValid, setIsCodeValid] = useState(false); // コードが有効かどうか
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false); // パスワード変更が成功したかどうか
   const [password, setPassword] = useState("");
 
   useEffect(() => {
@@ -53,27 +53,40 @@ const NewPassword = () => {
       <div className={styles.newPasswordContainer}>
         {isSuccess ? (
           // パスワードが正常に変更できた場合のUI
-          <div>
-            <h2>パスワードを変更しました</h2>
-            <p>新しいパスワードでログインできるようになりました</p>
-            <button onClick={handleContinue}>続行</button>
+          <div className={styles.successMessage}>
+            <h2 className={styles.successMessageTitle}>
+              パスワードを変更しました
+            </h2>
+            <p className={styles.successMessageText}>
+              新しいパスワードでログインできるようになりました
+            </p>
+            <button onClick={handleContinue} className={styles.continueButton}>
+              続行
+            </button>
           </div>
         ) : !isCodeValid ? (
           // リンクが無効または期限切れの場合のUI
-          <>
-            <h2>パスワードの再設定をもう一度お試しください</h2>
-            <div>
-              パスワードの再設定のリクエストの期限が切れたか、リンクがすでに使用されています
-            </div>
-          </>
+          <div className={styles.errorMassageContainer}>
+            <h2 className={styles.errorMessageTitle}>
+              パスワードの再設定をもう一度お試しください
+            </h2>
+            <p className={styles.errorMessageText}>
+              パスワードの再設定のリクエストの期限が切れたか、リンクがすでに使用されています。
+            </p>
+          </div>
         ) : (
           // パスワード入力画面のUI
-          <>
-            <h2>パスワードの再設定</h2>
-            <form onSubmit={handleSubmit}>
+          <div className={styles.newPasswordFormContainer}>
+            <h2 className={styles.newPasswordFormTitle}>パスワードの再設定</h2>
+            <form onSubmit={handleSubmit} className={styles.newPasswordForm}>
               <div>
-                <label htmlFor="new-password">新しいパスワード</label>
-                <div>
+                <label
+                  htmlFor="new-password"
+                  className={styles.newPasswordFormLabel}
+                >
+                  新しいパスワード
+                </label>
+                <div className={styles.newPasswordFormInputWrapper}>
                   <input
                     type="password"
                     id="email"
@@ -81,12 +94,15 @@ const NewPassword = () => {
                     placeholder="新しいパスワード"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    className={styles.newPasswordFormInput}
                   />
                 </div>
               </div>
-              <button type="submit">パスワードを変更</button>
+              <button type="submit" className={styles.newPasswordButton}>
+                パスワードを変更
+              </button>
             </form>
-          </>
+          </div>
         )}
       </div>
     </div>
