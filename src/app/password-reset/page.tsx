@@ -1,3 +1,4 @@
+"use client";
 import { auth } from "@/app/lib/firebase/auth";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { useState } from "react";
