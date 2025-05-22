@@ -1,1 +1,25 @@
 @use "src/styles/variables" as *;
+
+/* home.module.scss */
+
+.homeContainer {
+  position: relative;
+}
+
+.userIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profilePopup {
+  position: absolute;
+  top: 60px; // 適宜調整
+  right: 20px;
+  z-index: 100;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 16px;
+}
