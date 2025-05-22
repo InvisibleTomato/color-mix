@@ -8,7 +8,7 @@
   z-index: 50;
   background: $white;
   line-height: 1rem;
-  padding: 5%;
+  padding: 5% 2%;
 
   @include mq(tab) {
     padding: 3%;
@@ -18,3 +18,13 @@
     padding: 2%;
   }
 }
+
+// .headerContainer {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   width: 80vw;
+//   height: 100%;
+//   padding: 3% 0;
+//   margin: 0 auto;
+// }
