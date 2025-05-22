@@ -13,7 +13,7 @@ const LoginProfile = () => {
   };
   return (
     <div>
-      <div>
+      <div className={styles.LoginProfileContainer}>
         <div className={styles.profileIconContainer}>
           <span onClick={handleProfileClick}>
             <Image
