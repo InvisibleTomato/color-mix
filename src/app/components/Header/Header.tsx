@@ -1,15 +1,14 @@
 import React from "react";
-import styles from "@/app/components/Header/header.module.scss";
-import Link from "next/link";
+import styles from "@/app/components/Header/Header.module.scss";
 
 import Logo from "../Logo/Logo";
 
 export const Header = () => {
   return (
     <div className={styles.header}>
-      <Link href="/">
+      <div className={styles.headerContainer}>
         <Logo />
-      </Link>
+      </div>
     </div>
   );
 };
