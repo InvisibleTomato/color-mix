@@ -7,8 +7,10 @@ export default function HomePage() {
   return (
     <div>
       <div className={styles.homeContainer}>
-        <History />
-        <LoginProfile />
+        <div className={styles.homeIconContainer}>
+          <History />
+          <LoginProfile />
+        </div>
       </div>
     </div>
   );
