@@ -1,5 +1,5 @@
 "use client";
-import Profile from "@/app/components/Profile/Profile";
+import LoginProfile from "@/app/components/LoginProfile/LoginProfile";
 import History from "@/app/components/History/History";
 import styles from "./home-uid.module.scss";
 
@@ -8,7 +8,7 @@ export default function HomePage() {
     <div>
       <div className={styles.homeContainer}>
         <History />
-        <Profile />
+        <LoginProfile />
       </div>
     </div>
   );
