@@ -1,0 +1,45 @@
+@use "src/styles/variables" as *;
+
+.profileIconContainer {
+  width: 100%;
+  height: 100%;
+  position: lelative;
+  top: 0.05rem;
+  left: 80%;
+  z-index: 9999;
+}
+
+.profilePopup {
+  position: absolute;
+  top: 60px; // Adjust as needed
+  right: 20px;
+  z-index: 100;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.profilePopupTitle {
+  margin-bottom: 1rem;
+  font-size: $text-size;
+  font-weight: normal;
+  color: $black;
+}
+
+.profileLogout {
+  display: block;
+  color: $blue;
+  margin-bottom: 0.7rem;
+}
+
+.profileSignup {
+  display: block;
+  color: $blue;
+}
+
+.profilePopupContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
