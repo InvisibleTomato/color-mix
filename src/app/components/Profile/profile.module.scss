@@ -5,6 +5,14 @@
   display: flex;
   justify-content: flex-end;
   margin-right: 0.5rem;
+
+  @include mq(tab) {
+    margin-top: 2%;
+  }
+
+  @include mq(pc) {
+    margin-top: 2%;
+  }
 }
 
 .profilePopup {
