@@ -13,8 +13,8 @@ const Profile = () => {
   };
   return (
     <div>
-      <div>
-        <div className={styles.profileIconContainer}>
+      <div className={styles.ProfileContainer}>
+        <div className={styles.ProfileIconContainer}>
           <span onClick={handleProfileClick}>
             <Image
               src="/account-icon.svg"
@@ -30,9 +30,7 @@ const Profile = () => {
           <div className={styles.profilePopup}>
             <div className={styles.profilePopupContent}>
               <h3 className={styles.profilePopupTitle}>ログインしていません</h3>
-              <Link href={"#"} className={styles.profileLogout}>
-                ログアウト
-              </Link>
+
               <Link href={"/signup"} className={styles.profileSignup}>
                 アカウント登録へ
               </Link>
