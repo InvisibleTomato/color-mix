@@ -14,7 +14,7 @@ const LoginProfile = () => {
   return (
     <div>
       <div className={styles.LoginProfileContainer}>
-        <div className={styles.profileIconContainer}>
+        <div>
           <span onClick={handleProfileClick}>
             <Image
               src="/account-icon.svg"
