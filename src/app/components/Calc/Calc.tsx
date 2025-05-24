@@ -16,10 +16,10 @@ const Calc = () => {
           </thead>
           <tbody>
             {[
-              { name: "A剤", ratio: 1, percent: "", amount: "30g" },
-              { name: "B剤", ratio: 1, percent: "", amount: "30g" },
-              { name: "C剤", ratio: 2, percent: "", amount: "60g" },
-              { name: "D剤", ratio: "", percent: 10, amount: "3.0g" },
+              { name: "A剤", ratio: "", percent: "", amount: "30g" },
+              { name: "B剤", ratio: "", percent: "", amount: "30g" },
+              { name: "C剤", ratio: "", percent: "", amount: "60g" },
+              { name: "D剤", ratio: "", percent: "", amount: "3.0g" },
             ].map((row, index) => (
               <tr key={index}>
                 <td>{row.name}</td>
