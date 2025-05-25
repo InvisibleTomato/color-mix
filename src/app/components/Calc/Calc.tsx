@@ -1,7 +1,38 @@
+"use client";
 import React from "react";
 import styles from "./Calc.module.scss";
+import { useState } from "react";
+
+type Drug = {
+  name: string;
+  ratio: string;
+  percent: string;
+  amount: string;
+};
 
 const Calc = () => {
+  const [drugs, setDrugs] = useState<Drug[]>([
+    { name: "薬剤1", ratio: "", percent: "", amount: "" },
+  ]);
+
+  // +ボタンを押した時に配列を増やす
+  const handleAddRow = () => {
+    const newDrug: Drug = {
+      name: `薬剤${drugs.length + 1}`,
+      ratio: "",
+      percent: "",
+      amount: "",
+    };
+    setDrugs((prev) => [...prev, newDrug]);
+  };
+
+  //-ボタンを押した時に配列を減らす
+  const handleRemoveRow = () => {
+    if (drugs.length > 1) {
+      setDrugs((prev) => prev.slice(0, -1));
+    }
+  };
+
   return (
     <div>
       <div className={styles.calcInputContainer}>
@@ -15,33 +46,46 @@ const Calc = () => {
             </tr>
           </thead>
           <tbody>
-            {[
-              { name: "A剤", ratio: "", percent: "", amount: "30g" },
-              { name: "B剤", ratio: "", percent: "", amount: "30g" },
-              { name: "C剤", ratio: "", percent: "", amount: "60g" },
-              { name: "D剤", ratio: "", percent: "", amount: "3.0g" },
-            ].map((row, index) => (
+            {drugs.map((drug, index) => (
               <tr key={index}>
-                <td>{row.name}</td>
+                <td>{drug.name}</td>
                 <td>
                   <input
                     type="number"
-                    defaultValue={row.ratio}
                     className={styles.inputCell}
+                    value={drug.ratio}
+                    onChange={(e) => {
+                      const newDrugs = [...drugs];
+                      newDrugs[index].ratio = e.target.value;
+                      setDrugs(newDrugs);
+                    }}
                   />
                 </td>
                 <td>
                   <input
                     type="number"
-                    defaultValue={row.percent}
                     className={styles.inputCell}
+                    value={drug.percent}
+                    onChange={(e) => {
+                      const newDrugs = [...drugs];
+                      newDrugs[index].percent = e.target.value;
+                      setDrugs(newDrugs);
+                    }}
                   />
                 </td>
-                <td className={styles.amountCell}>{row.amount}</td>
+                <td className={styles.amountCell}>{drug.amount}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        <div>
+          <button onClick={handleRemoveRow} className={styles.minusButton}>
+            -
+          </button>
+          <button onClick={handleAddRow} className={styles.plusButton}>
+            +
+          </button>
+        </div>
       </div>
     </div>
   );
