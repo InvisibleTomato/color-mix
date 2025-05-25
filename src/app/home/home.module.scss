@@ -28,4 +28,9 @@
   max-width: 80vw;
   margin: 20% auto;
   padding: 1rem 0;
+
+  @include mq(pc) {
+    max-width: 60vw;
+    margin: 0 auto;
+  }
 }
