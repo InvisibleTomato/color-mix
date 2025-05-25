@@ -38,3 +38,22 @@
   font-size: 16px;
   color: #111827;
 }
+
+.Button {
+  background-color: $blue;
+  color: #ffffff;
+  height: 2.5rem;
+  width: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  line-height: 1.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
+  margin: 1rem;
+}
+
+.buttonContainer {
+  width: 40vw;
+  margin: 0 auto;
+}
