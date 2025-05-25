@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./Calc.module.scss";
 import { useState } from "react";
+import Image from "next/image";
 
 type Drug = {
   name: string;
@@ -79,12 +80,19 @@ const Calc = () => {
           </tbody>
         </table>
         <div>
-          <button onClick={handleRemoveRow} className={styles.minusButton}>
-            -
-          </button>
-          <button onClick={handleAddRow} className={styles.plusButton}>
-            +
-          </button>
+          <div className={styles.buttonContainer}>
+            <button onClick={handleRemoveRow} className={styles.Button}>
+              <Image
+                src="/remove.svg"
+                width={20}
+                height={20}
+                alt="Remove Row"
+              />
+            </button>
+            <button onClick={handleAddRow} className={styles.Button}>
+              <Image src="/add.svg" width={20} height={20} alt="Add Row" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
