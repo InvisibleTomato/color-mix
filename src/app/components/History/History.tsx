@@ -2,15 +2,20 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./History.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, forwardRef, useImperativeHandle } from "react";
 import { fetchCalculationHistory } from "@/app/lib/firebase/firestore";
 import type { Calculation } from "@/app/lib/firebase/firestore";
 import { deleteCalculation } from "@/app/lib/firebase/firestore";
 
+export type HistoryRef = {
+  reload: () => void;
+};
 const History = () => {
   const [history, setHistory] = useState<Calculation[]>([]);
   const [loading, setLoading] = useState(true);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+
+  //更新用の処理を後ほど追加
 
   useEffect(() => {
     const load = async () => {
@@ -67,10 +72,10 @@ const History = () => {
                 <p className={styles.text}>履歴が存在しません。</p>
               ) : (
                 <div>
-                  <ul className={styles.historyList}>
-                    {history.map((item) => (
-                      <>
-                        <div className={styles.historyListContainer}>
+                  <div className={styles.historyListContainer}>
+                    <ul className={styles.historyList}>
+                      {history.map((item) => (
+                        <li key={item.id} className={styles.historyItem}>
                           <button
                             className={styles.deleteButton}
                             onClick={() => handleDelete(item.id)}
@@ -83,7 +88,7 @@ const History = () => {
                               className={styles.deleteIcon}
                             />
                           </button>
-                          <li key={item.id} className={styles.historyItem}>
+                          <div className={styles.historyListContainer}>
                             <p className={styles.Text}>
                               総量: {item.totalAmount}g
                             </p>
@@ -100,11 +105,11 @@ const History = () => {
                               {item.createdAt?.toDate?.().toLocaleString() ??
                                 "不明"}
                             </p>
-                          </li>
-                        </div>
-                      </>
-                    ))}
-                  </ul>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               )}
             </div>
