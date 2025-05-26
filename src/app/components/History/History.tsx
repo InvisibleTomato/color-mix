@@ -5,6 +5,7 @@ import styles from "./History.module.scss";
 import { useEffect, useState } from "react";
 import { fetchCalculationHistory } from "@/app/lib/firebase/firestore";
 import type { Calculation } from "@/app/lib/firebase/firestore";
+import { deleteCalculation } from "@/app/lib/firebase/firestore";
 
 const History = () => {
   const [history, setHistory] = useState<Calculation[]>([]);
@@ -30,6 +31,20 @@ const History = () => {
   const handleHistoryClick = () => {
     setIsHistoryOpen((prev) => !prev);
   };
+
+  //履歴削除用の関数
+  const handleDelete = async (id: string) => {
+    const confirmDelete = window.confirm("この履歴を削除しますか？");
+    if (!confirmDelete) return;
+
+    try {
+      await deleteCalculation(id);
+      setHistory((prev) => prev.filter((item) => item.id !== id));
+    } catch (error) {
+      alert("削除に失敗しました");
+      console.error(error);
+    }
+  };
   return (
     <div>
       <div className={styles.HistoryContainer}>
@@ -49,27 +64,48 @@ const History = () => {
             <div className={styles.historyPopupContent}>
               <h3 className={styles.historyPopupTitle}>計算履歴</h3>
               {history.length === 0 ? (
-                <p>履歴が存在しません。</p>
+                <p className={styles.text}>履歴が存在しません。</p>
               ) : (
-                <ul className={styles.historyList}>
-                  {history.map((item) => (
-                    <li key={item.id} className={styles.historyItem}>
-                      <p>総量: {item.totalAmount}g</p>
-                      <ul>
-                        {item.drugs.map((drug, i) => (
-                          <li key={i}>
-                            {drug.name} - {drug.amount}g（比率:{" "}
-                            {drug.ratio || "N/A"}, %: {drug.percent || "N/A"}）
+                <div>
+                  <ul className={styles.historyList}>
+                    {history.map((item) => (
+                      <>
+                        <div className={styles.historyListContainer}>
+                          <button
+                            className={styles.deleteButton}
+                            onClick={() => handleDelete(item.id)}
+                          >
+                            <Image
+                              src="/delete.svg"
+                              alt="Delete Icon"
+                              width={24}
+                              height={24}
+                              className={styles.deleteIcon}
+                            />
+                          </button>
+                          <li key={item.id} className={styles.historyItem}>
+                            <p className={styles.Text}>
+                              総量: {item.totalAmount}g
+                            </p>
+                            <ul>
+                              {item.drugs.map((drug, i) => (
+                                <li key={i} className={styles.Text}>
+                                  {drug.name} - {drug.amount}g（比率:{" "}
+                                  {drug.ratio}, %: {drug.percent}）
+                                </li>
+                              ))}
+                            </ul>
+                            <p className={`${styles.timeStamp} ${styles.Text}`}>
+                              保存日時:{" "}
+                              {item.createdAt?.toDate?.().toLocaleString() ??
+                                "不明"}
+                            </p>
                           </li>
-                        ))}
-                      </ul>
-                      <p className={styles.timestamp}>
-                        保存日時:{" "}
-                        {item.createdAt?.toDate?.().toLocaleString() ?? "不明"}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
+                        </div>
+                      </>
+                    ))}
+                  </ul>
+                </div>
               )}
             </div>
           </div>
