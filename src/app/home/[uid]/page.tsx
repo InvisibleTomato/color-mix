@@ -2,7 +2,7 @@
 import LoginProfile from "@/app/components/LoginProfile/LoginProfile";
 import History from "@/app/components/History/History";
 import styles from "./home-uid.module.scss";
-import Calc from "@/app/components/Calc/Calc";
+import UsersCalc from "@/app/components/UsersCalc/UsersCalc";
 
 export default function HomePage() {
   return (
@@ -13,7 +13,7 @@ export default function HomePage() {
           <LoginProfile />
         </div>
         <div className={styles.calcContainer}>
-          <Calc />
+          <UsersCalc />
         </div>
       </div>
     </div>
