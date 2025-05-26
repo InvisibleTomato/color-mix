@@ -1,4 +1,4 @@
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, deleteDoc, doc } from "firebase/firestore";
 import app from "./firebase";
 import { auth } from "./auth";
 import { onAuthStateChanged, User } from "firebase/auth";
@@ -70,4 +70,10 @@ export const fetchCalculationHistory = async (): Promise<Calculation[]> => {
     id: doc.id,
     ...doc.data(),
   })) as Calculation[];
+};
+
+export const deleteCalculation = async (id: string) => {
+  const user = await waitForAuthUser();
+  const ref = doc(db, "users", user.uid, "calculations", id);
+  await deleteDoc(ref);
 };
