@@ -5,7 +5,11 @@ import Image from "next/image";
 import { saveCalculation } from "@/app/lib/firebase/firestore";
 import type { Drug } from "@/app/lib/firebase/firestore";
 
-const UsersCalc = () => {
+type UsersCalcProps = {
+  onSaved?: () => void;
+};
+
+const UsersCalc = ({ onSaved }: UsersCalcProps) => {
   const [totalAmount, setTotalAmount] = useState<number>(0);
   const [drugs, setDrugs] = useState<Drug[]>([
     { id: 1, name: "薬剤1", ratio: "", percent: "", amount: "" },
@@ -76,6 +80,7 @@ const UsersCalc = () => {
       setIsSaving(true);
       await saveCalculation(totalAmount, drugs);
       alert("保存が完了しました！");
+      onSaved?.();
     } catch (error) {
       console.error("保存エラー:", error);
       alert("保存に失敗しました");
