@@ -17,7 +17,7 @@ const LoginProfile = () => {
         <div>
           <span onClick={handleProfileClick}>
             <Image
-              src="/account-icon.svg"
+              src="/account.svg"
               width={50}
               height={50}
               alt="Picture of the author"

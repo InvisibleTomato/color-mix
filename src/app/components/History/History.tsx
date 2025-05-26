@@ -68,7 +68,7 @@ const History = forwardRef<HistoryRef>((props, ref) => {
         <div className={styles.HistoryIconContainer}>
           <span onClick={handleHistoryClick}>
             <Image
-              src="/history-icon.svg"
+              src="/history.svg"
               width={50}
               height={50}
               alt="履歴アイコン"
