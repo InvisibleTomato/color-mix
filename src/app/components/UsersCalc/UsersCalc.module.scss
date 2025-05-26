@@ -1,2 +1,14 @@
 @use "src/styles/variables" as *;
 @use "@/app/components/Calc/Calc.module.scss" as *;
+
+.saveButton {
+  background: $purple;
+  color: $white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  width: 40%;
+
+  margin: 10% auto;
+  display: block;
+}
