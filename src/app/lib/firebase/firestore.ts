@@ -5,7 +5,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export const db = getFirestore(app);
 
-type Drug = {
+export type Drug = {
   id: number;
   name: string;
   ratio: string;
