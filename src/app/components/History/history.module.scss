@@ -23,7 +23,7 @@
 
 .historyPopup {
   position: absolute;
-  width: 40vw;
+  width: 80vw;
   top: 120%;
   left: 10%;
   z-index: 100;
@@ -31,4 +31,46 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   padding: 16px;
+}
+
+.historyItem {
+  margin: 10% 0;
+}
+
+.timeStamp {
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  line-height: 1.5;
+}
+
+.Text {
+  margin: 0.5rem 0;
+  font-size: $text-size;
+  color: $black;
+  letter-spacing: 0.05rem;
+}
+
+.deleteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: $black;
+  border-radius: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1.5rem;
+}
+
+.deleteIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: $white;
+}
+
+.historyListContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
