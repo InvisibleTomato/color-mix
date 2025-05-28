@@ -20,6 +20,7 @@
 }
 
 .LoginProfilePopupTitle {
+  margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-size: $text-size;
   font-weight: 600;
@@ -28,8 +29,23 @@
 
 .LoginProfileLogout {
   display: block;
-  color: $blue;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: $white;
+  margin-top: 1rem;
   margin-bottom: 0.7rem;
+  background: $blue;
+}
+.LoginProfileDelete {
+  display: block;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: $white;
+  margin-top: 0.5rem;
+
+  background: $red;
 }
 
 .LoginProfilePopupContent {
@@ -42,4 +58,5 @@
   display: block;
   color: $black;
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
