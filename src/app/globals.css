@@ -7,10 +7,3 @@ html {
   font-family: var(--font-noto-sans-jp), var(--font-roboto), sans-serif;
   font-size: 16px;
 }
-
-/* input欄をタップした際にズームしないように */
-input,
-select,
-textarea {
-  font-size: 17px;
-}
