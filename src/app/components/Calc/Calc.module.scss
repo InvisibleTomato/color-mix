@@ -123,6 +123,7 @@
   cursor: pointer;
   font-weight: bold;
   margin: 10% auto;
+  font-size: 1rem;
 
   @include mq(tab) {
     width: 20vw;
