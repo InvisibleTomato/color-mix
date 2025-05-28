@@ -38,6 +38,7 @@
   background: $blue;
   width: 40vw;
   height: 3rem;
+  font-size: 1rem;
 
   @include mq(tab) {
     width: 30vw;
@@ -56,6 +57,7 @@
   margin-top: 0.5rem;
   background: $red;
   width: 40vw;
+  font-size: 1rem;
 
   @include mq(tab) {
     width: 30vw;
