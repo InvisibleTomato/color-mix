@@ -74,6 +74,10 @@
   @include mq(tab) {
     width: 20vw;
   }
+
+  @include mq(pc) {
+    width: 10vw;
+  }
 }
 
 .totalAmountContainer {
