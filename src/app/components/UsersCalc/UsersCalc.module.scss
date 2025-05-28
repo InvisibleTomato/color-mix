@@ -15,25 +15,3 @@
     width: 20vw;
   }
 }
-
-.resetButton {
-  display: block;
-  width: 30vw;
-  background-color: $light-gray;
-  color: $gray;
-  padding: 0.7rem;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-weight: bold;
-  margin: 10% auto;
-
-  @include mq(tab) {
-    width: 20vw;
-    padding: 0.8rem;
-  }
-
-  @include mq(pc) {
-    width: 10vw;
-  }
-}
