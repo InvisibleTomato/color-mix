@@ -14,7 +14,7 @@ const PasswordReset = () => {
     const actionCodeSettings = {
       // パスワード再設定後のリダイレクト URL
       //↓デプロイ時は本番環境のURLに変更する
-      url: "http://localhost:3000/",
+      url: "https://color-mix-rho.vercel.app/",
     };
     try {
       await sendPasswordResetEmail(auth, email, actionCodeSettings);
