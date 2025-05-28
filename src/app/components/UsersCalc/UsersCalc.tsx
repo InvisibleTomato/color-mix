@@ -143,6 +143,8 @@ const UsersCalc = ({ onSaved }: UsersCalcProps) => {
                 <td>
                   <input
                     type="number"
+                    inputMode="numeric"
+                    pattern="\d*"
                     className={styles.inputCell}
                     value={drug.percent}
                     disabled={!!drug.ratio}

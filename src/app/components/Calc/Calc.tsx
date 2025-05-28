@@ -92,6 +92,8 @@ const Calc = () => {
           <h2 className={styles.totalAmountTitle}>1剤の総量</h2>
           <input
             type="number"
+            inputMode="numeric"
+            pattern="\d*"
             value={totalAmount}
             onChange={(e) => setTotalAmount(Number(e.target.value))}
             className={styles.totalAmountInput}
