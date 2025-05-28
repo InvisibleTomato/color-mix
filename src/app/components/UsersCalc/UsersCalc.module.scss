@@ -10,6 +10,7 @@
   width: 50vw;
   margin: 10% auto;
   display: block;
+  font-size: 1rem;
 
   @include mq(pc) {
     width: 20vw;
