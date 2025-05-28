@@ -2,8 +2,10 @@
 import React from "react";
 import styles from "./LoginProfile.module.scss";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { auth } from "@/app/lib/firebase/auth";
+import { onAuthStateChanged, User } from "firebase/auth";
 
 const LoginProfile = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -11,6 +13,20 @@ const LoginProfile = () => {
   const handleProfileClick = () => {
     setIsProfileOpen((prev) => !prev);
   };
+
+  const [email, setEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
+      if (user) {
+        setEmail(user.email);
+      } else {
+        setEmail(null);
+      }
+    });
+
+    return () => unsubscribe(); // クリーンアップ
+  }, []);
   return (
     <div>
       <div className={styles.LoginProfileContainer}>
@@ -30,7 +46,9 @@ const LoginProfile = () => {
           <div className={styles.LoginProfilePopup}>
             <div className={styles.LoginProfilePopupContent}>
               <h3 className={styles.LoginProfilePopupTitle}>メールアドレス</h3>
-              <p className={styles.LoginProfileEmail}>example@example.com</p>
+              <p className={styles.LoginProfileEmail}>
+                {email ? email : "未ログイン"}
+              </p>
               <Link href={"#"} className={styles.LoginProfileLogout}>
                 ログアウト
               </Link>
