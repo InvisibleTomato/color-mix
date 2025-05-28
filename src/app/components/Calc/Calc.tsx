@@ -100,7 +100,7 @@ const Calc = () => {
         </div>
         <table className={styles.inputTable}>
           <thead>
-            <tr>
+            <tr className={styles.columnTitle}>
               <th>薬剤</th>
               <th>比率</th>
               <th>%</th>
@@ -109,7 +109,7 @@ const Calc = () => {
           </thead>
           <tbody>
             {drugs.map((drug) => (
-              <tr key={drug.id}>
+              <tr key={drug.id} className={styles.cellContainer}>
                 <td>{drug.name}</td>
                 <td>
                   <input
