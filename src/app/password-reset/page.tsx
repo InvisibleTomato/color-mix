@@ -14,7 +14,7 @@ const PasswordReset = () => {
     const actionCodeSettings = {
       // パスワード再設定後のリダイレクト URL
       //↓デプロイ時は本番環境のURLに変更する
-      url: "https://color-mix-rho.vercel.app/new-password?continueUrl=https://color-mix-rho.vercel.app/signin",
+      url: "https://color-mix-rho.vercel.app/",
       handleCodeInApp: true,
     };
     try {
