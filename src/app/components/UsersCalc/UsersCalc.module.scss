@@ -5,10 +5,35 @@
   background: $purple;
   color: $white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1rem;
   border-radius: 0.5rem;
-  width: 40%;
-
+  width: 50vw;
   margin: 10% auto;
   display: block;
+
+  @include mq(pc) {
+    width: 20vw;
+  }
+}
+
+.resetButton {
+  display: block;
+  width: 30vw;
+  background-color: $light-gray;
+  color: $gray;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 10% auto;
+
+  @include mq(tab) {
+    width: 20vw;
+    padding: 0.8rem;
+  }
+
+  @include mq(pc) {
+    width: 10vw;
+  }
 }
