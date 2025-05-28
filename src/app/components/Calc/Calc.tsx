@@ -114,6 +114,8 @@ const Calc = () => {
                 <td>
                   <input
                     type="number"
+                    inputMode="numeric"
+                    pattern="\d*"
                     className={styles.inputCell}
                     value={drug.ratio}
                     disabled={!!drug.percent}
@@ -125,6 +127,8 @@ const Calc = () => {
                 <td>
                   <input
                     type="number"
+                    inputMode="numeric"
+                    pattern="\d*"
                     className={styles.inputCell}
                     value={drug.percent}
                     disabled={!!drug.ratio}
