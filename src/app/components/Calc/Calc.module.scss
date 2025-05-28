@@ -13,8 +13,14 @@
 .inputTable th,
 .inputTable td {
   padding: 0.7rem;
-  border-bottom: 1px solid #e5e7eb;
   white-space: nowrap;
+}
+
+.cellContainer {
+  border-bottom: 1px solid $light-gray;
+}
+.columnTitle {
+  border-bottom: 1px solid $light-gray;
 }
 
 .inputTable th {
