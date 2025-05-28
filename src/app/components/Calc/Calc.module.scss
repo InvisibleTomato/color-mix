@@ -17,9 +17,11 @@
 }
 
 .cellContainer {
+  height: 5rem;
   border-bottom: 1px solid $light-gray;
 }
 .columnTitle {
+  height: auto;
   border-bottom: 1px solid $light-gray;
 }
 
