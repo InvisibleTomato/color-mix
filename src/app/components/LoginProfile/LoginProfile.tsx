@@ -116,7 +116,7 @@ const LoginProfile = () => {
               </button>
               <button
                 onClick={handleDeleteAccount}
-                className={styles.profileDelete}
+                className={styles.LoginProfileDelete}
               >
                 アカウント削除
               </button>
