@@ -7,7 +7,8 @@ import { Noto_Sans_JP, Roboto } from "next/font/google";
 
 export const metadata = {
   title: "Color Mix",
-  description: "美容師向けのカラー剤調合計算アプリ",
+  description: "美容師向けのカラー剤調合計算アプリです",
+  robots: "noindex, nofollow",
 };
 
 const roboto = Roboto({
