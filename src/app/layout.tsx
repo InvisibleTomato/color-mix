@@ -4,12 +4,12 @@ import styles from "./layout.module.scss";
 import { Header } from "@/app/components/Header/Header";
 import { Footer } from "@/app/components/Footer/Footer";
 import { Noto_Sans_JP, Roboto } from "next/font/google";
+import Head from "next/head";
 
 export const metadata = {
   title: "Color Mix",
   description: "美容師向けのカラー剤調合計算アプリです",
   robots: "noindex, nofollow",
-  viewport: "width=device-width, initial-scale=1.0, maximum-scale=1.0",
 };
 
 const roboto = Roboto({
@@ -30,6 +30,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className={`${roboto.variable} ${notoSansJP.variable}`}>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+        />
+      </Head>
       <body className={styles.body}>
         <Header />
 
