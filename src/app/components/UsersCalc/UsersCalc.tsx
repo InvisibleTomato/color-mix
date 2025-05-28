@@ -9,12 +9,21 @@ type UsersCalcProps = {
   onSaved?: () => void;
 };
 
+//初期状態の定数
+const initialDrugs: Drug[] = [
+  { id: 1, name: "薬剤1", ratio: "", percent: "", amount: "" },
+];
+
 const UsersCalc = ({ onSaved }: UsersCalcProps) => {
   const [totalAmount, setTotalAmount] = useState<number>(0);
-  const [drugs, setDrugs] = useState<Drug[]>([
-    { id: 1, name: "薬剤1", ratio: "", percent: "", amount: "" },
-  ]);
+  const [drugs, setDrugs] = useState<Drug[]>(initialDrugs);
   const [isSaving, setIsSaving] = useState<boolean>(false);
+
+  //リセット関数
+  const handleReset = () => {
+    setTotalAmount(0);
+    setDrugs(initialDrugs);
+  };
 
   const handleAddRow = () => {
     const newDrug: Drug = {
@@ -162,6 +171,9 @@ const UsersCalc = ({ onSaved }: UsersCalcProps) => {
             {isSaving ? "保存中..." : "保存する"}
           </button>
         </div>
+        <button onClick={handleReset} className={styles.resetButton}>
+          リセット
+        </button>
       </div>
     </div>
   );
