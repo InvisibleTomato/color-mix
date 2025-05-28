@@ -17,14 +17,6 @@
   vertical-align: middle;
 }
 
-.cellContainer {
-  border-bottom: 1px solid $light-gray;
-}
-.columnTitle {
-  height: auto;
-  border-bottom: 1px solid $light-gray;
-}
-
 .inputTable th {
   background-color: #ffffff;
   font-weight: 600;
@@ -76,27 +68,6 @@
   font-size: 2rem;
   box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
   margin: 1rem;
-}
-
-.resetButton {
-  display: block;
-  width: 22vw;
-  background-color: $light-gray;
-  color: $gray;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  margin: 10% auto;
-
-  @include mq(tab) {
-    width: 15vw;
-  }
-
-  @include mq(pc) {
-    width: 10vw;
-  }
 }
 
 .buttonContainer {
