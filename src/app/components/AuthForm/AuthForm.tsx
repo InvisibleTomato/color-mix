@@ -48,8 +48,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, buttonLabel, mode }) => {
       return;
     }
 
-    console.log("入力されたメールアドレス:", email);
-    console.log("入力されたパスワード:", password);
+    //開発時確認用
+    // console.log("入力されたメールアドレス:", email);
+    // console.log("入力されたパスワード:", password);
 
     try {
       const userCredential =
@@ -58,10 +59,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, buttonLabel, mode }) => {
           : await signIn(email, password);
 
       const uid = userCredential.user.uid;
-      console.log(
-        `${mode === "signup" ? "サインアップ" : "サインイン"}成功`,
-        userCredential.user
-      );
+      // console.log(
+      //   `${mode === "signup" ? "サインアップ" : "サインイン"}成功`,
+      //   userCredential.user
+      // );
       router.push(`/home/${uid}`); // ユーザーのホームページに遷移
     } catch (error) {
       const err = error as FirebaseError;

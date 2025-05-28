@@ -10,7 +10,7 @@ const PasswordReset = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     //メールアドレスが取得できているか確認
-    console.log("入力されたメールアドレス:", email);
+    // console.log("入力されたメールアドレス:", email);
     const actionCodeSettings = {
       // パスワード再設定後のリダイレクト URL
       //↓デプロイ時は本番環境のURLに変更する
