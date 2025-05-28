@@ -34,6 +34,10 @@ const Profile = () => {
               <Link href={"/signup"} className={styles.profileSignup}>
                 アカウント登録へ
               </Link>
+
+              <Link href={"/signin"} className={styles.profileSignin}>
+                サインイン
+              </Link>
             </div>
           </div>
         )}
