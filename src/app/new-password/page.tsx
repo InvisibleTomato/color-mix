@@ -1,4 +1,4 @@
-import NewPassword from "./NewPasswordClient";
+import NewPassword from "../components/NewPasswordClient/NewPasswordClient";
 import { Suspense } from "react";
 // 動的レンダリング指定
 export const dynamic = "force-dynamic";
