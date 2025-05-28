@@ -3,9 +3,11 @@ import { auth } from "@/app/lib/firebase/auth";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { useState } from "react";
 import styles from "./password-reset.module.scss";
+import { useRouter } from "next/navigation";
 
 const PasswordReset = () => {
   const [email, setEmail] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,6 +22,8 @@ const PasswordReset = () => {
     try {
       await sendPasswordResetEmail(auth, email, actionCodeSettings);
       setEmail("");
+      alert("再設定用URLをメールにて送信しました");
+      router.push("https://color-mix-rho.vercel.app/");
     } catch (error) {
       console.error(error);
     }
