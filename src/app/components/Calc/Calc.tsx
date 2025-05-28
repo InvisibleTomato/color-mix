@@ -11,11 +11,20 @@ type Drug = {
   amount: string;
 };
 
+// 配列の初期状態
+const initialDrugs: Drug[] = [
+  { id: 1, name: "薬剤1", ratio: "", percent: "", amount: "" },
+];
+
 const Calc = () => {
   const [totalAmount, setTotalAmount] = useState<number>(0);
-  const [drugs, setDrugs] = useState<Drug[]>([
-    { id: 1, name: "薬剤1", ratio: "", percent: "", amount: "" },
-  ]);
+  const [drugs, setDrugs] = useState<Drug[]>(initialDrugs);
+
+  //リセット処理
+  const handleReset = () => {
+    setTotalAmount(0);
+    setDrugs(initialDrugs);
+  };
 
   const handleAddRow = () => {
     const newDrug: Drug = {
@@ -137,6 +146,9 @@ const Calc = () => {
             <Image src="/add.svg" width={20} height={20} alt="Add Row" />
           </button>
         </div>
+        <button onClick={handleReset} className={styles.resetButton}>
+          リセット
+        </button>
       </div>
     </div>
   );
