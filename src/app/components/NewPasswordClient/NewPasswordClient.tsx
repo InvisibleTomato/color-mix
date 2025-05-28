@@ -1,5 +1,5 @@
 "use client";
-import styles from "./new-password.module.scss";
+import styles from "./NewPassWordClient.module.scss";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
