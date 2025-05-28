@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import { auth } from "@/app/lib/firebase/auth";
 import { onAuthStateChanged, User, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import { db } from "@/app/lib/firebase/firestore";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 
 const LoginProfile = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -25,14 +27,13 @@ const LoginProfile = () => {
       }
     });
 
-    return () => unsubscribe(); // クリーンアップ
+    return () => unsubscribe();
   }, []);
 
-  //サインアウトボタン
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      setEmail(null); // 状態をリセット
+      setEmail(null);
       router.push("/");
     } catch (error) {
       console.error("ログアウトエラー:", error);
@@ -40,7 +41,6 @@ const LoginProfile = () => {
     }
   };
 
-  //アカウント削除
   const handleDeleteAccount = async () => {
     const user = auth.currentUser;
 
@@ -53,20 +53,40 @@ const LoginProfile = () => {
     if (!confirm) return;
 
     try {
+      const userDocRef = doc(db, "users", user.uid);
+      const calculationsRef = collection(userDocRef, "calculations");
+
+      //calculations サブコレクションの削除
+      const snapshot = await getDocs(calculationsRef);
+      const deletePromises = snapshot.docs.map((docSnap) =>
+        deleteDoc(docSnap.ref)
+      );
+      await Promise.all(deletePromises);
+
+      //親ドキュメントを削除
+      await deleteDoc(userDocRef);
+
+      //Firebase 認証ユーザー削除
       await user.delete();
+
       setEmail(null);
       router.push("/");
-    } catch (error: any) {
-      if (error.code === "auth/requires-recent-login") {
-        alert("再ログインが必要です。ログアウト後に再度ログインしてください。");
-        await signOut(auth);
-        router.push("/");
+    } catch (error: unknown) {
+      if (
+        typeof error === "object" &&
+        error !== null &&
+        "code" in error &&
+        typeof (error as { code: unknown }).code === "string"
+      ) {
+        if ((error as { code: string }).code === "auth/requires-recent-login") {
+          // ...
+        }
       } else {
-        console.error("アカウント削除エラー:", error);
-        alert("アカウント削除に失敗しました");
+        console.error("不明なエラー:", error);
       }
     }
   };
+
   return (
     <div>
       <div className={styles.LoginProfileContainer}>
@@ -81,7 +101,6 @@ const LoginProfile = () => {
           </span>
         </div>
 
-        {/* ポップアップとしてのプロフィール表示 */}
         {isProfileOpen && (
           <div className={styles.LoginProfilePopup}>
             <div className={styles.LoginProfilePopupContent}>
