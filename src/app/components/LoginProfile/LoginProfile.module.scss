@@ -36,6 +36,16 @@
   margin-top: 1rem;
   margin-bottom: 0.7rem;
   background: $blue;
+  width: 40vw;
+  height: 3rem;
+
+  @include mq(tab) {
+    width: 30vw;
+  }
+
+  @include mq(pc) {
+    max-width: 20rem;
+  }
 }
 .LoginProfileDelete {
   display: block;
@@ -44,8 +54,16 @@
   border-radius: 0.5rem;
   color: $white;
   margin-top: 0.5rem;
-
   background: $red;
+  width: 40vw;
+
+  @include mq(tab) {
+    width: 30vw;
+  }
+
+  @include mq(pc) {
+    max-width: 20rem;
+  }
 }
 
 .LoginProfilePopupContent {
