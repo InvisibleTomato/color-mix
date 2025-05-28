@@ -9,6 +9,7 @@ export const metadata = {
   title: "Color Mix",
   description: "美容師向けのカラー剤調合計算アプリです",
   robots: "noindex, nofollow",
+  viewport: "width=device-width, initial-scale=1.0, maximum-scale=1.0",
 };
 
 const roboto = Roboto({
