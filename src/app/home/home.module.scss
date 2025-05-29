@@ -4,6 +4,16 @@
 
 .homeContainer {
   position: relative;
+
+  @include mq(tab) {
+    width: 70vw;
+    margin: 3% auto;
+  }
+
+  @include mq(pc) {
+    width: 60vw;
+    margin: 0 auto;
+  }
 }
 
 .userIcon {
