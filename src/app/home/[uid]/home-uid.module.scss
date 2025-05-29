@@ -9,6 +9,14 @@
   align-items: start;
   flex-direction: row;
   margin: 2% auto;
+
+  @include mq(tab) {
+    width: 70vw;
+  }
+
+  @include mq(pc) {
+    width: 60vw;
+  }
 }
 
 .calcContainer {
