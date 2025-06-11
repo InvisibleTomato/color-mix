@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import styles from "./UsersCalc.module.scss";
 import Image from "next/image";
 import { saveCalculation } from "@/app/lib/firebase/firestore";
-import type { Drug } from "@/app/lib/firebase/firestore";
+import type { Drug } from "@/app/lib/types/drug";
+import { calculateAmounts } from "@/app/lib/logic/calculateAmounts";
 
 type UsersCalcProps = {
   onSaved?: () => void;
@@ -18,6 +19,7 @@ const UsersCalc = ({ onSaved }: UsersCalcProps) => {
   const [totalAmount, setTotalAmount] = useState<number>(0);
   const [drugs, setDrugs] = useState<Drug[]>(initialDrugs);
   const [isSaving, setIsSaving] = useState<boolean>(false);
+  const [calculatedDrugs, setCalculatedDrugs] = useState<Drug[]>(initialDrugs);
 
   //リセット関数
   const handleReset = () => {
@@ -58,36 +60,14 @@ const UsersCalc = ({ onSaved }: UsersCalcProps) => {
   };
 
   useEffect(() => {
-    const percentAmounts = drugs.map((d) =>
-      d.percent !== "" ? (Number(d.percent) / 100) * totalAmount : 0
-    );
-
-    const usedAmount = percentAmounts.reduce((acc, val) => acc + val, 0);
-    const remainingAmount = totalAmount - usedAmount;
-
-    const ratioValues = drugs.map((d) =>
-      d.percent === "" ? Number(d.ratio) || 0 : 0
-    );
-    const ratioSum = ratioValues.reduce((acc, val) => acc + val, 0);
-
-    const updatedDrugs = drugs.map((drug, i) => {
-      const fromPercent = percentAmounts[i];
-      const fromRatio =
-        ratioSum > 0 ? (ratioValues[i] / ratioSum) * remainingAmount : 0;
-      const amount = (fromPercent + fromRatio).toFixed(2);
-      return { ...drug, amount };
-    });
-
-    const isChanged = updatedDrugs.some((d, i) => d.amount !== drugs[i].amount);
-    if (isChanged) {
-      setDrugs(updatedDrugs);
-    }
+    const updated = calculateAmounts(drugs, totalAmount);
+    setCalculatedDrugs(updated);
   }, [totalAmount, drugs]);
 
   const handleSave = async () => {
     try {
       setIsSaving(true);
-      await saveCalculation(totalAmount, drugs);
+      await saveCalculation(totalAmount, calculatedDrugs);
       alert("保存が完了しました！");
       onSaved?.();
     } catch (error) {
@@ -124,7 +104,7 @@ const UsersCalc = ({ onSaved }: UsersCalcProps) => {
             </tr>
           </thead>
           <tbody>
-            {drugs.map((drug) => (
+            {calculatedDrugs.map((drug) => (
               <tr key={drug.id}>
                 <td>{drug.name}</td>
                 <td>
