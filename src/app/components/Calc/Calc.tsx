@@ -2,14 +2,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Calc.module.scss";
 import Image from "next/image";
-
-type Drug = {
-  id: number;
-  name: string;
-  ratio: string;
-  percent: string;
-  amount: string;
-};
+import { calculateAmounts } from "@/app/lib/logic/calculateAmounts";
+import type { Drug } from "@/app/lib/types/drug";
 
 // 配列の初期状態
 const initialDrugs: Drug[] = [
@@ -19,6 +13,7 @@ const initialDrugs: Drug[] = [
 const Calc = () => {
   const [totalAmount, setTotalAmount] = useState<number>(0);
   const [drugs, setDrugs] = useState<Drug[]>(initialDrugs);
+  const [calculatedDrugs, setCalculatedDrugs] = useState<Drug[]>(initialDrugs);
 
   //リセット処理
   const handleReset = () => {
@@ -59,31 +54,9 @@ const Calc = () => {
   };
 
   useEffect(() => {
-    const percentAmounts = drugs.map((d) =>
-      d.percent !== "" ? (Number(d.percent) / 100) * totalAmount : 0
-    );
-
-    const usedAmount = percentAmounts.reduce((acc, val) => acc + val, 0);
-    const remainingAmount = totalAmount - usedAmount;
-
-    const ratioValues = drugs.map((d) =>
-      d.percent === "" ? Number(d.ratio) || 0 : 0
-    );
-    const ratioSum = ratioValues.reduce((acc, val) => acc + val, 0);
-
-    const updatedDrugs = drugs.map((drug, i) => {
-      const fromPercent = percentAmounts[i];
-      const fromRatio =
-        ratioSum > 0 ? (ratioValues[i] / ratioSum) * remainingAmount : 0;
-      const amount = (fromPercent + fromRatio).toFixed(2);
-      return { ...drug, amount };
-    });
-
-    const isChanged = updatedDrugs.some((d, i) => d.amount !== drugs[i].amount);
-    if (isChanged) {
-      setDrugs(updatedDrugs);
-    }
-  }, [totalAmount, drugs]);
+    const updated = calculateAmounts(drugs, totalAmount);
+    setCalculatedDrugs(updated);
+  }, [drugs, totalAmount]);
 
   return (
     <div>
@@ -110,7 +83,7 @@ const Calc = () => {
             </tr>
           </thead>
           <tbody>
-            {drugs.map((drug) => (
+            {calculatedDrugs.map((drug) => (
               <tr key={drug.id} className={styles.cellContainer}>
                 <td>{drug.name}</td>
                 <td>
