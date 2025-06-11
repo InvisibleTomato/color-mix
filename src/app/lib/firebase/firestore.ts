@@ -11,16 +11,9 @@ import {
   query,
 } from "firebase/firestore";
 import { Timestamp } from "firebase/firestore";
+import type { Drug } from "@/app/lib/types/drug";
 
 export const db = getFirestore(app);
-
-export type Drug = {
-  id: number;
-  name: string;
-  ratio: string;
-  percent: string;
-  amount: string;
-};
 
 export const saveCalculation = async (totalAmount: number, drugs: Drug[]) => {
   const user = auth.currentUser;
