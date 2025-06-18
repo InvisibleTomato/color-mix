@@ -12,6 +12,7 @@ import {
   deleteCalculation,
 } from "@/app/lib/firebase/firestore";
 import type { Calculation } from "@/app/lib/firebase/firestore";
+import Loading from "@/app/loading/loading";
 
 export type HistoryRef = {
   reload: () => void;
@@ -59,7 +60,7 @@ const History = forwardRef<HistoryRef>((props, ref) => {
   };
 
   if (loading) {
-    return <p>読み込み中...</p>;
+    return <Loading />;
   }
 
   return (
